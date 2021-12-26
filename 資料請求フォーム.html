@@ -1,0 +1,31 @@
+<div>
+    <p><span>資料請求のお問合せはこちらからお願いいたします。<br /></span></p>
+    <p><span><strong>※ファイルの容量制限がかかることがありますので、メールドレスは</strong></span><strong>携帯アドレスではなく、PCアドレスをご記入ください</strong></p>
+    <p>確認画面で入力した内容をご確認の上、「送信する」ボタンを押してください。</p>
+</div>
+<p>
+    <script type="text/javascript">
+        jQuery(function($) {
+            jQuery('input[name="zip2"]').keyup(function(e) {
+                AjaxZip3.zip2addr('zip1', 'zip2', 'area', 'city');
+            })
+        });
+    </script>
+</p>
+<dl class="form-layout clearfix">
+    <dt>送付方法 <span class="required">必須</span></dt>
+    <dd>[mwform_radio name="送付方法" children="PDF資料のメール送付" value="PDF資料のメール送付" vertically="true"]</dd>
+    <dt>お名前 <span class="required">必須</span></dt>
+    <dd>[mwform_text name="お名前"]</dd>
+    <dt>フリガナ <span class="required">必須</span></dt>
+    <dd>[mwform_text name="フリガナ"]</dd>
+    <dt>メールアドレス <span class="required">必須</span></dt>
+    <dd>[mwform_text name="メールアドレス" size="40"]</dd>
+    <dt>大学・団体・会社名</dt>
+    <dd>[mwform_text name="大学・団体・会社名" size="30"]</dd>
+    <dt>ICYEを知ったきっかけ</dt>
+    <dd>[mwform_select name="ICYEを知ったきっかけ" class="span" children=":選択してください,大学等でチラシを見た,知人の紹介,Activoを見た,SNSで見た,イベントで見た,ネット検索" post_raw="true"]</dd>
+    <dt>ご質問など</dt>
+    <dd class="h120">[mwform_textarea name="コメント欄" rows="10"]</dd>
+</dl>
+<div class="input-bt">[mwform_submitButton preview_value="確認する" submit_value="送信する"]　[mwform_backButton value="戻る"]</div>

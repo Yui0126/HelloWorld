@@ -1,0 +1,136 @@
+<head>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0 2vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        ul {
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        dd {
+            margin-left: 0;
+        }
+        
+        .flow {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: space-between;
+            -ms-flex-pack: space-between;
+            justify-content: space-between;
+        }
+        
+        .flow>li {
+            -ms-flex-preferred-size: 22%;
+            flex-basis: 22%;
+        }
+        
+        .flow>li .icon {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            line-height: 50px;
+            width: 50px;
+            color: #fff;
+            background: rgb(107, 144, 219);
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 50%;
+            text-align: center;
+            position: relative;
+            letter-spacing: 2px;
+        }
+        
+        .flow>li .icon::before {
+            content: "";
+            border: solid transparent;
+            border-width: 8px;
+            border-top-color: rgb(107, 144, 219);
+            position: absolute;
+            top: calc(100% - 2px);
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        
+        .flow>li dl {
+            padding: 30px 20px;
+            margin: 0;
+            border: 3px solid rgb(107, 144, 219);
+            position: relative;
+        }
+        
+        .flow>li:not(:last-child) dl::before {
+            content: "";
+            width: 14px;
+            height: 14px;
+            margin-right: 10px;
+            display: inline-block;
+            border-top: 4px solid rgb(102, 213, 233);
+            border-right: 4px solid rgb(102, 213, 233);
+            position: absolute;
+            top: calc(50% - 14px);
+            left: 104%;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        
+        .flow>li dl dt {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(107, 144, 219);
+            -ms-flex-preferred-size: 20%;
+            flex-basis: 20%;
+            margin-bottom: 1vh;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="flow">
+        <li>
+            <span class="icon">01</span>
+            <dl>
+                <dt>ご応募</dt>
+                <dd>エントリーフォームに入力のうえ、ご応募ください。</dd>
+            </dl>
+        </li>
+
+        <li>
+            <span class="icon">02</span>
+            <dl>
+                <dt>書類選考</dt>
+                <dd>書類選考を通過した方には、追ってご連絡いたします。</dd>
+            </dl>
+        </li>
+
+        <li>
+            <span class="icon">03</span>
+            <dl>
+                <dt>面接</dt>
+                <dd>人事または事業部責任者との面接を行います。</dd>
+            </dl>
+        </li>
+
+        <li>
+            <span class="icon">04</span>
+            <dl>
+                <dt>内定</dt>
+                <dd>応募から内定までは2週間程度を想定しております。</dd>
+            </dl>
+        </li>
+    </ul>

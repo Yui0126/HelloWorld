@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+/* CSS Document */
+
+body {
+    font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+
+.mgn0 {
+    margin-bottom: 0px!important;
+}
+
+.mgn20 {
+    margin-bottom: 20px!important;
+}
+
+.mgn30 {
+    margin-bottom: 30px!important;
+}
+
+.mgn40 {
+    margin-bottom: 40px!important;
+}
+
+.mgn50 {
+    margin-bottom: 50px!important;
+}
+
+.mgn60 {
+    margin-bottom: 60px!important;
+}
+
+.mgn70 {
+    margin-bottom: 70px!important;
+}
+
+.mgn80 {
+    margin-bottom: 80px!important;
+}
+
+.mgn90 {
+    margin-bottom: 90px!important;
+}
+
+.mgn100 {
+    margin-bottom: 100px!important;
+}
+
+.mgn120 {
+    margin-bottom: 120px!important;
+}
+
+.center {
+    text-align: center;
+}
+
+h1 {
+    width: 100%;
+    letter-spacing: 0.05em;
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 70px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}
+
+h2 {
+    width: 100%;
+    font-size: 2.6rem;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 60px;
+    display: inline-block;
+    line-height: 2;
+    text-align: center;
+}
+
+h3 {
+    width: 100%;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 30px;
+    display: inline-block;
+    line-height: 1.4;
+    border-left: 3px solid #E11E1E;
+    padding-left: 20px;
+    text-align: left;
+}
+
+h4 {
+    width: 100%;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 15px;
+    display: inline-block;
+    line-height: 1.4;
+    text-align: left;
+}
+
+#post p {
+    width: 100%;
+    line-height: 180%;
+    text-align: left;
+    color: #000;
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+
+#post a {
+    color: #E11E1E;
+    text-decoration: none;
+    transition: all 0.2s linear;
+}
+
+#post a:link {
+    color: #E11E1E;
+}
+
+#post a:visited {
+    color: #E11E1E;
+}
+
+#post a:hover {
+    color: #E11E1E;
+    text-decoration: underline;
+}
+
+#post a:active {
+    color: #E11E1E;
+}
+
+#post img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto 30px!important;
+}
+
+#post img.aligncenter {
+    clear: both;
+    display: block;
+    margin: 0 auto 1.75em;
+}
+
+#post #socialLink {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#post #socialLink ul li {
+    display: inline-block;
+}
+
+#post #socialLink ul li:before {
+    display: none;
+}
+
+#post #socialLink ul li#TweetShare {
+    padding-bottom: 5px!important;
+}
+
+#post ul {
+    margin-bottom: 40px;
+}
+
+#post ul li {
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-align: left;
+    position: relative;
+    padding-left: 20px;
+}
+
+#post ul li:before {
+    content: "・";
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#post dl {
+    margin-bottom: 60px;
+}
+
+#post dl dt,
+#post dl dt,
+{}
+
+#post dl dt {
+    padding: 0;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    line-height: 1.6;
+    clear: left;
+    float: left;
+    font-weight: bold;
+    position: relative;
+}
+
+#post dl dd {
+    font-size: 1.6rem;
+    text-align: left;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-left: 8em;
+}

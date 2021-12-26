@@ -1,0 +1,94 @@
+<style>.flow {
+    width: calc(100% - 30px);
+    /* ステップフロー全体の横幅を指定 */
+    display: flex;
+    /* flexboxで横並びにする */
+    justify-content: space-between;
+    /* 横並びにしたものを等間隔で並べる */
+}
+
+.flow li {
+    color: #333;
+    /* 文字色を黒に指定 */
+    font-size: 11px;
+    /* 文字サイズを指定 */
+    width: calc(100% / 3);
+    /* 横幅を三等分した1つの大きさに指定 */
+    background: #eee;
+    /* 背景色をグレーに指定 */
+    line-height: 50px;
+    /* 行間(高さの代わり)を指定 */
+    text-align: center;
+    /* 文字を中央寄せにする */
+    position: relative;
+    /* 基準位置とする */
+}
+
+.flow li:not(:first-child):not(:last-child) {
+    padding: 0 0 0 10px;
+    /* 最初と最後以外には左に適度な余白を指定 */
+}
+
+.flow li::before,
+.flow li::after {
+    content: "";
+    /* 疑似要素では必須 */
+    width: 0;
+    /* 横幅を0に指定 */
+    height: 0;
+    /* 高さを0に指定 */
+    display: block;
+    /* ブロック要素にする */
+    position: absolute;
+    /* 相対位置に指定 */
+}
+
+.flow li::before {
+    border: solid 32px transparent;
+    /* 32pxのborderを指定 */
+    border-right: solid 13px transparent;
+    /* 幅を合わせるため右線は13pxにする */
+    border-left: solid 13px #FFF;
+    /* 白い三角形を作成して▷の形で上に重ねて削り取る */
+    top: -7px;
+    /* 重ねる位置(縦軸)を調整 */
+    left: 0;
+    /* 重ねる位置(横軸)を調整 */
+    z-index: 1;
+    /* 重なり順を指定 */
+}
+
+.flow li::after {
+    border: solid 25px transparent;
+    /* 25pxのborderを指定 */
+    border-left: solid 10px #EDEDED;
+    /* 左のborderで背景色と同じ▶の部分を作成する */
+    border-right: solid 10px transparent;
+    /* 幅を合わせるために右線は10pxにする */
+    top: 0;
+    /* 重ねる位置(縦軸)を調整 */
+    right: -20px;
+    /* 重ねる位置(横軸)を調整 */
+    z-index: 2;
+    /* 重なり順の優先度を他よりも上げる */
+}
+
+.flow li:first-child::before,
+.flow li:last-child::after {
+    content: none;
+    /* 最初のliの左と最後のliの右は作らない */
+}
+
+
+/* 以下.currentだけ色を変えるCSS */
+
+.flow li.current {
+    color: #FFF;
+    background: #FCC;
+}
+
+.flow li.current::after {
+    border-left: solid 10px #FCC;
+}
+
+</style><ul class="flow"><li class="current">入力</li><li>確認</li><li>完了</li></ul>

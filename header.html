@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<head>
+    <meta charset="<?php bloginfo ('charset'); ?>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="description" content="<?php echo get_description(); ?>">
+
+    <!-- ここからOGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php bloginfo('name'); ?> | <?php the_title(); ?>" />
+    <meta property="og:url" content="<?php echo(" https:// " . $_SERVER["HTTP_HOST "] . $_SERVER["REQUEST_URI "]); ?>" />
+    <meta property="og:description" content="<?php echo get_description(); ?>">
+    <?php
+$str = $post->post_content;
+$searchPattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i'; if (has_post_thumbnail() && !is_archive()){ $image_id = get_post_thumbnail_id(); $image = wp_get_attachment_image_src( $image_id, 'full'); echo '
+        <meta property="og:image" content="'.$image[0].'" />';echo "\n"; } else { echo '
+        <meta property="og:image" content="'; bloginfo('template_directory'); echo '/images/og-image.png" />';echo "\n"; } ?>
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@icyejapan">
+        <meta name="twitter:creator" content="@icyejapan">
+        <!-- ここまでOGP -->
+
+        <link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon.png">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css" type="text/css">
+        <link rel="stylesheet" href="<?php bloginfo ('stylesheet_url'); ?>" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link href="<?php bloginfo('template_directory'); ?>/slick/slick.css" rel="stylesheet" type="text/css">
+        <link href="<?php bloginfo('template_directory'); ?>/slick/slick-theme.css" rel="stylesheet" type="text/css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/img-switch.js"></script>
+        <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/common.js"></script>
+        <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/slick/slick.js"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                jQuery(function() {
+                    $("#loadContainer").hide();
+                    $("#wrapper").fadeIn();
+                });
+
+            }
+
+            $(document).ready(function() {
+                var headerHeight = $('.site-header').outerHeight(true);
+                var ancherHeight = $('.ancher-link').outerHeight(true);
+                //var headerHeight = 100;
+                var urlHash = location.hash;
+                if (urlHash) {
+                    $('body,html').stop().scrollTop(0);
+                    setTimeout(function() {
+                        var target = $(urlHash);
+                        var position = target.offset().top - (headerHeight + ancherHeight);
+                        $('body,html').stop().animate({
+                            scrollTop: position
+                        }, 1000);
+                    }, 20);
+                }
+                $('a[href^="#"]').click(function() {
+                    var href = $(this).attr("href");
+                    var target = $(href);
+                    var position = target.offset().top - (headerHeight + ancherHeight);
+                    $('body,html').stop().animate({
+                        scrollTop: position
+                    }, 1000);
+                });
+            });
+
+
+
+            $(window).on('load scroll', function() {
+                if ($(window).scrollTop() > 195 && $(window).width() >= 769) {
+
+                    $('.ancher-link').addClass('fixed');
+                    $('.contentsArea.top.anchor').addClass('fixed');
+
+                } else {
+
+                    $('.ancher-link').removeClass('fixed');
+                    $('.contentsArea.top.anchor').removeClass('fixed');
+                }
+            })
+
+
+
+            $(document).ready(function() {
+                $('.slider').slick({
+                    dots: true,
+                    infinite: true,
+                    autoplay: true,
+                    arrows: true,
+                    speed: 600,
+                    autoplaySpeed: 5000,
+                    slidesToShow: 1,
+                    centerMode: false,
+                    centerPadding: '0',
+                    variableWidth: false,
+                    prevArrow: '<button class="slide-arrow prev-arrow"><img src="<?php bloginfo('
+                    template_directory '); ?>/images/arrow_pre.png" class="slide-arrow prev-arrow"></button>',
+                    nextArrow: '<button class="slide-arrow next-arrow"><img src="<?php bloginfo('
+                    template_directory '); ?>/images/arrow_nxt.png" class="slide-arrow next-arrow"></button>'
+                });
+            });
+        </script>
+        <?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+    <div id="loadContainer">
+        <div id="loading"><span></span></div>
+    </div>
+    <div id="wrapper">
+        <a name="pageTop" id="pageTop"></a>
+        <header id="header" class="site-header">
+            <div id="head-inner" class="clearfix">
+                <div id="logo"><a href="<?php echo home_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.png" alt="ICYE ジャパン" ></a></div>
+                <div id="tagline">現地度120%の国際ボランティア</div>
+                <a class="menu"><span class="bar" id="bar01"></span> <span class="bar" id="bar02"></span> <span class="bar" id="bar03"></span></a>
+                <nav id="nav">
+                    <div id="nav-wrap">
+                        <ul class="nav-column">
+                            <li class="parent"><a href="<?php echo home_url(); ?>/countries/"> 国からえらぶ</a></li>
+                            <li class="child-wrap clearfix">
+                                <ul class="child country">
+                                    <li><a href="<?php echo home_url(); ?>/countries#asia">アジア・太平洋</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/countries#africa">アフリカ</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/countries#america">北米・中南米</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/countries#europe">ヨーロッパ</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav-column clearfix">
+                            <li class="parent"><a href="<?php echo home_url(); ?>/projects/">プロジェクトからえらぶ</a></li>
+                            <li class="child-wrap clearfix">
+                                <ul class="child project clearfix">
+                                    <li><a href="<?php echo home_url(); ?>/projects#volunteer">国際ボランティア</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/agriculture/">農業</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/animal/">動物</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/children/">子ども</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/disabiled/">障がい者</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/environment/">環境</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/sports/">スポーツ</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/youth/">青少年</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/education/">教育</a></li>
+                                </ul>
+                            </li>
+                            <li class="child-wrap clearfix">
+                                <ul class="child project clearfix">
+                                    <li><a href="<?php echo home_url(); ?>/projects#intern">NGOインターンシップ</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/secretariat/">事務局</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/arts/">芸術/文化</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/community/">コミュニティ</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/development">開発</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/minority">マイノリティ</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/woman/">女性支援</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/youth-intern">青少年</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/medical/">医療/保健</a></li>
+                                </ul>
+                            </li>
+                            <li class="child-wrap clearfix">
+                                <ul class="child project-other clearfix">
+                                    <li><a href="<?php echo home_url(); ?>/projects#others">スタディツアー・その他</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/domestic">国内ボランティア</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/project/tour/">スタディツアー</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav-column">
+                            <li class="parent"><a href="<?php echo home_url(); ?>/about/">ICYE JAPANとは</a></li>
+                            <li class="parent"><a href="<?php echo home_url(); ?>/news/">ニュース＆トピックス</a></li>
+                            <li class="parent"><a href="<?php echo home_url(); ?>/contact/document/">お問い合わせ・説明会</a></li>
+                            <li class="parent"><a href="<?php echo home_url(); ?>/application/">申込の流れ・参加申込</a></li>
+                            <li>
+                                <ul class="other">
+                                    <li><a href="<?php echo home_url(); ?>/faq/">よくあるご質問</a></li>
+                                    <li><a href="<?php echo home_url(); ?>/policy/">個人情報保護方針</a></li>
+                                </ul>
+                                <ul class="social clearfix">
+                                    <li><a href="https://instagram.com/icyejapan/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/ico_insta.png" width="24" alt="ICYE ジャパンInstagram " ></a></li>
+                                    <li><a href="https://twitter.com/icyejapan" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/ico_tw.png" width="24" alt="ICYE ジャパン Twitter" ></a></li>
+                                    <li><a href="https://www.facebook.com/icyejapan" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/ico_fb.png" width="12" alt="ICYE ジャパンFacebook" ></a></li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="black-bg"></div>
+        <!-- header End -->

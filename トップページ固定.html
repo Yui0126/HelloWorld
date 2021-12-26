@@ -1,0 +1,234 @@
+<?php
+/*
+Template Name: トップページ
+*/
+?>
+    <?php get_header(); ?>
+
+    <div id="topVisual">
+
+        <ul class="slider">
+            <?php
+						$args = array(
+						'post_type' => 'topImage', 
+						'posts_per_page' => -1,  
+						);
+						$the_query = new WP_Query( $args );
+						 ?>
+                <?php if ( $the_query->have_posts() ) :?>
+                <?php  while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <li>
+                    <?php  
+		$img = get_field('top_image');
+		$imgurl = wp_get_attachment_image_src($img, 'top-slide'); 
+		$url = get_field('link_url'); 
+		$subtxt = get_field('sub_text'); 
+		if($imgurl): ?>
+                    <img src="<?php echo $imgurl[0]; ?>" alt="<?php the_title(); ?>">
+                    <div class="img-cover"></div>
+                    <?php endif; ?>
+                    <div class="slide-info">
+                        <p class="slide-sub-text">
+                            <?php echo $subtxt; ?>
+                        </p>
+                        <p class="slide-title">
+                            <?php the_title(); ?>
+                        </p>
+
+
+                        <?php if($url = get_field('link_url' )): ?>
+                        <a href="<?php echo $url; ?>" class="bt-slide">詳しくみる</a>
+                        <?php else: ?>
+                        <?php endif; ?>
+                    </div>
+                </li>
+                <?php endwhile; endif; ?>
+                <?php wp_reset_postdata(); ?>
+        </ul>
+    </div>
+    <div class="contentsArea">
+
+        <section class="w980 shadow-base" id="top-countery-area">
+            <h1 class="cap">国からえらぶ</h1>
+            <span>DESTINATIONS</span>
+            <ul>
+                <li><a href="<?php echo home_url(); ?>/countries#asia" class="btn"><span class="inner">アジア・太平洋</span></a></li>
+                <li><a href="<?php echo home_url(); ?>/countries#africa" class="btn"><span class="inner">アフリカ</span></a></li>
+                <li><a href="<?php echo home_url(); ?>/countries#america" class="btn"><span class="inner">北米・中南米</span></a></li>
+                <li><a href="<?php echo home_url(); ?>/countries#europe" class="btn"><span class="inner">ヨーロッパ</span></a></li>
+            </ul>
+            <div id="map"><img src="<?php bloginfo('template_directory'); ?>/images/map_world.png" width="920" alt="world map"></div>
+        </section>
+
+        <section class="w980 shadow-base" id="top-project-area">
+            <h1 class="cap">プロジェクトからえらぶ</h1>
+            <span>PROJECTS</span>
+            <ul class="column3 top-project-list clearfix">
+                <li><a href="<?php echo home_url(); ?>/projects#volunteer"><img src="<?php bloginfo('template_directory'); ?>/images/top_project1.jpg" width="325" alt="">
+			 <span class="top-title">国際ボランティア</span></a></li>
+                <li><a href="<?php echo home_url(); ?>/projects#intern"><img src="<?php bloginfo('template_directory'); ?>/images/top_project2.jpg" width="325" alt="">
+			 <span class="top-title">NGOインターンシップ</span></a></li>
+                <li><a href="<?php echo home_url(); ?>/projects#others"><img src="<?php bloginfo('template_directory'); ?>/images/top_project3.jpg" width="325" alt="">
+			 <span class="top-title">スタディツアー・その他</span></a></li>
+            </ul>
+        </section>
+    </div>
+
+    <div class=" contentsArea wfull gray">
+        <section class="w980" id="top-news-area">
+            <h1 class="cap">ニュース&amp;トピックス</h1>
+            <span>NEWS & TOPICS</span>
+            <div id="tabArea">
+                <ul class="tab">
+                    <li class="select">最新情報</li>
+                    <li>ニュース</li>
+                    <li>イベント</li>
+                    <li>コラム</li>
+
+                </ul>
+                <ul class="content">
+                    <li>
+                        <dl class="newsList" class="clearfix">
+                            <?php
+					$args = array(
+					'posts_per_page' => 5,  
+					);
+					$the_query = new WP_Query( $args );
+					 ?>
+                                <?php if ( $the_query->have_posts() ) :
+  while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <?php 
+	$cat = get_the_category();
+	$cat = $cat[0];
+?>
+                                <dt><span class="date"><?php echo get_the_date(); ?></span><span class="news-label label-<?php echo $cat->category_nicename; ?>"><?php echo $cat->cat_name; ?></span></dt>
+                                <dd>
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </dd>
+                                <?php endwhile; endif; ?>
+                                <?php wp_reset_postdata(); ?>
+                        </dl>
+                    </li>
+
+                    <li class="hide">
+                        <dl class="newsList" class="clearfix">
+                            <?php
+					$args = array(
+					'category_name' => 'info',
+					'posts_per_page' => 5,  
+					);
+					$the_query = new WP_Query( $args );
+					 ?>
+                                <?php if ( $the_query->have_posts() ) :
+  while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <?php 
+	$cat = get_the_category();
+	$cat = $cat[0];
+?>
+                                <dt><span class="date"><?php echo get_the_date(); ?></span><span class="news-label label-<?php echo $cat->category_nicename; ?>"><?php echo $cat->cat_name; ?></span></dt>
+                                <dd>
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </dd>
+                                <?php endwhile; endif; ?>
+                                <?php wp_reset_postdata(); ?>
+                        </dl>
+                    </li>
+
+                    <li class="hide">
+                        <dl class="newsList" class="clearfix">
+                            <?php
+					$args = array(
+					'category_name' => 'event',
+					'posts_per_page' => 5,  
+					);
+					$the_query = new WP_Query( $args );
+					 ?>
+                                <?php if ( $the_query->have_posts() ) :
+  while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <?php 
+	$cat = get_the_category();
+	$cat = $cat[0];
+?>
+                                <dt><span class="date"><?php echo get_the_date(); ?></span><span class="news-label label-<?php echo $cat->category_nicename; ?>"><?php echo $cat->cat_name; ?></span></dt>
+                                <dd>
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </dd>
+                                <?php endwhile; endif; ?>
+                                <?php wp_reset_postdata(); ?>
+                        </dl>
+                    </li>
+
+                    <li class="hide">
+                        <dl class="newsList" class="clearfix">
+                            <?php
+					$args = array(
+					'category_name' => 'column',
+					'posts_per_page' => 5,  
+					);
+					$the_query = new WP_Query( $args );
+					 ?>
+                                <?php if ( $the_query->have_posts() ) :
+  while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                                <?php 
+	$cat = get_the_category();
+	$cat = $cat[0];
+?>
+                                <dt><span class="date"><?php echo get_the_date(); ?></span><span class="news-label label-<?php echo $cat->category_nicename; ?>"><?php echo $cat->cat_name; ?></span></dt>
+                                <dd>
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </dd>
+                                <?php endwhile; endif; ?>
+                                <?php wp_reset_postdata(); ?>
+                        </dl>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </section>
+
+        <section class="w800">
+            <div id="top-calender">
+                <iframe src="https://calendar.google.com/calendar/embed?src=icye-japan.com_lhuhfvpfvokoglh0cajktkifk4%40group.calendar.google.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </section>
+
+
+
+        <section class="w980" id="top-bt-area">
+            <div id="picup-bt">
+                <ul class="clearfix">
+                    <li><a href="https://line.me/R/ti/p/%40cpw6483z" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/bt_line_pc.png" width="300" alt="Line友だち追加" class="js-image-switch"></a></li>
+                    <li><a href="<?php echo home_url(); ?>/contact/document/"><img src="<?php bloginfo('template_directory'); ?>/images/bt_contact_pc.png" width="300" alt="お問い合わせ・資料請求" class="js-image-switch"></a></li>
+                    <li><a href="<?php echo home_url(); ?>/about/"><img src="<?php bloginfo('template_directory'); ?>/images/bt_icye_pc.png" width="300" alt="ICYEについて" class="js-image-switch"></a></li>
+                </ul>
+            </div>
+            <div id="socialArea">
+                <h3 class="top">ICYE OFFICIAL SNS</h3>
+                <ul class="clearfix">
+                    <li><a href="https://instagram.com/icyejapan/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/ico_insta_l.png" width="66" alt="Instagram"></a></li>
+                    <li><a href="https://twitter.com/icyejapan" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/ico_tw_l.png" width="66" alt="Twitter" ></a></li>
+                    <li><a href="https://www.facebook.com/icyejapan" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/ico_fb_l.png" width="66" alt="Facebook"></a></li>
+                </ul>
+            </div>
+
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+    <?php get_footer(); ?>

@@ -1,0 +1,37 @@
+<?php
+/*
+Template Name: 資料請求・お問い合わせ
+*/
+?>
+    <?php get_header(); ?>
+
+    <div class="contentsArea top">
+        <section class="w860">
+            <h1 class="cap">資料請求・お問い合わせ</h1>
+            <span>
+CONTACT
+</span>
+            <h2>
+                <?php the_title(); ?>
+            </h2>
+            <div id="tabArea-contact">
+                <ul class="tab-contact">
+                    <a href="<?php echo home_url(); ?>/contact/document/">
+		<li class="tab <?php if( is_page('contact/document') ):?>active<?php endif; ?>">資料請求</li>
+		</a> <a href="<?php echo home_url(); ?>/contact/regular/">
+		<li class="tab <?php if( is_page('contact/regular') ):?>active<?php endif; ?>">定期説明会</li>
+		</a> <a href="<?php echo home_url(); ?>/contact/individual/">
+		<li class="tab <?php if( is_page('contact/individual') ):?>active<?php endif; ?>">個別相談</li>
+		</a>
+                </ul>
+            </div>
+            <div id="post" class="contact">
+                <?php if(have_posts()): while(have_posts()): 
+  the_post(); ?>
+                <?php remove_filter (‘the_content’, ‘wpautop’); ?>
+                <?php the_content(); ?>
+                <?php endwhile; endif; ?>
+            </div>
+    </div>
+    <script type='text/javascript' src='https://ajaxzip3.github.io/ajaxzip3.js'></script>
+    <?php get_footer(); ?>
