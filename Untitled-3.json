@@ -1,0 +1,36 @@
+	
+https://reg31.smp.ne.jp
+application/json
+
+{
+    "spiral_api_token": "00087c6gU5g2caa3983f1b5d13c6238b0fef23b41b1d7d59c29c",
+    "passkey": 1603238085,
+    "signature": "1da61b89e479ce8f823755e4b9f080944684a656",
+    "db_title": "member",
+    "lines_per_page": 10,
+    "page": 1,
+    "select_columns": [
+      "[name, age]"
+    ],
+    "data_format": [
+      "[title1, title2]"
+    ],
+    "select_name": "rule_name",
+    "search_condition": [
+      {
+        "name": "email",
+        "value": "@example.com",
+        "operator": "=",
+        "logical_connection": "and"
+      }
+    ],
+    "sort": [
+      {
+        "name": "name",
+        "order": "asc"
+      }
+    ],
+    "group_by": [
+      "[email, name]"
+    ]
+  }
